@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Etch-a-Sketch</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+    </head>
+
+    <body>
+        <select id="color">
+            <option selected value="black" >Black</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="pink">Pink</option>
+            <option value="purple">Purple</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+        </select>
+        <select id="size" onchange=sizeSelect()>
+            <option selected value="size">Select Size</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
+            <option value="48">48</option>
+        </select>
+        <div id="mainContainer">
+        <div class="title"></div>
+        <div id="grid">
+        <div class="container"></div>
+        
+        </div>
+        <input id='btn' onclick=resetPage() type='image' src="buttonReset.png"/>
+        </div>
+        
+    </body>
+    <script type="text/javascript" src="script.js"></script>
+</html>

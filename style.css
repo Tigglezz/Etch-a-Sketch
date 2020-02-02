@@ -1,0 +1,38 @@
+body {
+    text-align: center;
+}
+
+#box {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 30px;
+    width: 30px;
+    
+}
+
+.title {
+    position: absolute;
+}
+
+#grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 480px;
+    height: 480px;
+    margin: auto;
+    border: 3px solid black;
+    top: 0;
+
+}
+
+#btn {
+    border: none;
+    position: absolute;
+    margin-left: -40px;
+    margin-top: 0px;
+    height: 100px;
+    width: 100px;
+}
+
+#color {
+    margin-bottom: 50px;
+}
