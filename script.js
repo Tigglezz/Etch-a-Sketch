@@ -1,6 +1,8 @@
 const container = document.getElementsByClassName("container")
 const box = document.getElementById('box');
 var height
+var rainbowCount = 1; //Starts at one. ranges through colors 
+makeGrid(16); //Default grid   
 
 function makeGrid(rows) {
     // Creates rows one by one until max rows is reached
@@ -34,7 +36,7 @@ function makeGrid(rows) {
             }
 
             // Add event listener for mouse over events
-            box.addEventListener("mouseover", hoverBox);
+            box.addEventListener("mouseenter", hoverBox);
             container[i].appendChild(box);
         }
     }
@@ -42,7 +44,12 @@ function makeGrid(rows) {
 
 function hoverBox(e){
     // add mouseover event for target's background color
-    e.target.style.backgroundColor = colorSelect();
+    if(colorSelect() == "rainbow"){
+        rainbow(e);
+    }
+    else{
+        e.target.style.backgroundColor = colorSelect();
+    }
 }
 
 function resetPage(){
@@ -62,9 +69,6 @@ function sizeSelect(){
     var element = document.getElementById('size');
     var elementValue = element.options[element.selectedIndex].value;
 
-    // Change the width and height of boxes to fit area
-    console.log(document.getElementById('box'));
-
     // Make grid 
     makeGrid(elementValue);    
 
@@ -75,4 +79,16 @@ function sizeSelect(){
 function resetGrid(){
     var elem = document.getElementById("grid");
     while (elem.firstChild) elem.removeChild(elem.firstChild);
+}
+
+function rainbow(e)
+{
+    // Gets all color options
+    var element = document.getElementById('color');
+
+    if(rainbowCount == 7){rainbowCount = 1}; //Max range is 7
+    //Choose random color
+    e.target.style.backgroundColor = element.options[rainbowCount++].value;
+     
+    
 }
