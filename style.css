@@ -1,12 +1,18 @@
+@font-face{
+    font-family:'patrick';
+    src: url('fonts/PatrickHand-Regular.ttf');
+}
+
 body {
     text-align: center;
+    font-family: 'patrick';
 }
 
 #box {
+    background-color: rgb(255, 255, 255);
     border: 1px solid rgba(0, 0, 0, 0.4);
     height: 30px;
     width: 30px;
-    
 }
 
 .title {

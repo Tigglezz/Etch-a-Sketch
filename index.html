@@ -5,9 +5,9 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="viewport" content="width=device-width,user-scalable=no">
     </head>
-
+    <h1>Etch-a-Sketch</h1>
     <body>
-        <select id="color">
+        <select id="color" onchange="resetColor()">
             <option selected value="black" >Black</option>
             <option value="red">Red</option>
             <option value="orange">Orange</option>
@@ -20,7 +20,6 @@
 
         </select>
         <select id="size" onchange=sizeSelect()>
-            <option value="size">Select Size</option>
             <option value="8">8</option>
             <option value="16" selected>16</option>
             <option value="24">24</option>

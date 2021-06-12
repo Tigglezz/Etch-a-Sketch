@@ -2,6 +2,9 @@ const container = document.getElementsByClassName("container")
 const box = document.getElementById('box');
 var height
 var rainbowCount = 1; //Starts at one. ranges through colors 
+var color;
+var opacity = 0.3;
+
 makeGrid(16); //Default grid   
 
 function makeGrid(rows) {
@@ -48,7 +51,19 @@ function hoverBox(e){
         rainbow(e);
     }
     else{
+        console.log(e.target.style.backgroundColor);
+        if(e.target.style.backgroundColor == colorSelect())
+        {
+            opacity += 0.1;
+        }
+        else if(e.target.style.backgroundColor == '')
+        {
+            //reset opacity
+            opacity = 0.3;
+        }
         e.target.style.backgroundColor = colorSelect();
+
+
     }
 }
 
@@ -61,7 +76,30 @@ function colorSelect(){
     // Gets the selected color option on change
     var element = document.getElementById('color');
     var elementValue = element.options[element.selectedIndex].value;
-    return elementValue;
+    switch(elementValue)
+    {
+        case "black":
+            return 'rgba(0, 0, 0, ' + opacity+')'
+        case "red":
+            return 'rgba(255, 0, 0, ' + opacity+')'
+        case "yellow":
+            return 'rgba(255, 255, 0, ' + opacity+')'
+        case "pink":
+            return 'rgba(255, 0, 255, ' + opacity+')'
+        case "purple":
+            return 'rgba(125, 0, 125, ' + opacity+')'
+        case "orange":
+            return 'rgba(255, 125, 0, ' + opacity+')'
+        case "green":
+            return 'rgba(0, 255, 0, ' + opacity+')'
+        case "blue":
+            return 'rgba(0, 0, 255, ' + opacity+')'
+    }    
+}
+
+function resetColor()
+{
+    opacity = 0.5;
 }
 
 function sizeSelect(){
