@@ -1,24 +1,27 @@
 const container = document.getElementsByClassName("container")
-const box = document.getElementById('box');
 var height
-var rainbowCount = 1; //Starts at one. ranges through colors 
-var color;
-var opacity = 0.3;
-
+var currentRows;
+var color = "black"; //default black
+var colors = ["red", "orange", "yellow", "pink", "purple", "green", "blue"]
+var rainbowCount = 0; //Starts at zero. ranges through colors 
+var paint = false;
+var currentOpacity = 0.3;
 makeGrid(16); //Default grid   
 
 function makeGrid(rows) {
     // Creates rows one by one until max rows is reached
     // Creates containers
+    currentRows = rows;
     resetGrid()
     for(i = 0; i < rows; i++) {
         var newContainer = document.createElement("div");
         newContainer.setAttribute('class', 'container');
         document.getElementById("grid").appendChild(newContainer);
-    // Creates box div to go in containers creating one row
+        // Creates box div to go in containers creating one row
         for (j = 0; j < rows; j++) {
             var box = document.createElement("div");
-            box.setAttribute("id", "box");
+            box.setAttribute("class", "box");
+            box.setAttribute("prevopacity", currentOpacity);
 
             // Set size according to amount of rows
             if(rows == 48) {
@@ -39,7 +42,7 @@ function makeGrid(rows) {
             }
 
             // Add event listener for mouse over events
-            box.addEventListener("mouseenter", hoverBox);
+            box.addEventListener("mouseover", hoverBox);
             container[i].appendChild(box);
         }
     }
@@ -47,39 +50,51 @@ function makeGrid(rows) {
 
 function hoverBox(e){
     // add mouseover event for target's background color
-    if(colorSelect() == "rainbow"){
-        rainbow(e);
-    }
-    else{
-        console.log(e.target.style.backgroundColor);
-        if(e.target.style.backgroundColor == colorSelect())
-        {
-            opacity += 0.1;
-        }
-        else if(e.target.style.backgroundColor == '')
-        {
-            //reset opacity
-            opacity = 0.3;
-        }
-        e.target.style.backgroundColor = colorSelect();
 
+    if(paint)
+    {
+        currentOpacity = e.target.style.backgroundColor.slice(-4, -1);
+        var prevOpacity = e.target.getAttribute("prevopacity");
+
+        if(currentOpacity == prevOpacity)
+        {
+            prevOpacity =  parseFloat(currentOpacity) + 0.1;
+            e.target.setAttribute("prevopacity", prevOpacity.toString());
+        }
+        if(colorSelect(currentOpacity).slice(5,-4) != e.target.style.backgroundColor.slice(5,-4) && color != "rainbow")
+        {
+            //Different color
+            prevOpacity = 0.3;
+        }
+
+        e.target.style.backgroundColor = colorSelect(prevOpacity);
 
     }
+    
 }
 
 function resetPage(){
-    location.reload();
+    makeGrid(currentRows)
     return;
 }
 
-function colorSelect(){
-    // Gets the selected color option on change
-    var element = document.getElementById('color');
-    var elementValue = element.options[element.selectedIndex].value;
-    switch(elementValue)
+function colorSelect(opacity){
+    // Gets the selected color option with input opacity
+    var inputColor = color;
+    
+    if(opacity == "")
+    {
+        opacity = 0.5;
+    }
+    if(inputColor == "rainbow"){
+        inputColor = colors[rainbowCount++];
+        if(rainbowCount == 7){rainbowCount = 0}; //Max range is 7
+    }
+
+    switch(inputColor)
     {
         case "black":
-            return 'rgba(0, 0, 0, ' + opacity+')'
+            return 'rgba(0, 0, 0, ' + opacity +')'
         case "red":
             return 'rgba(255, 0, 0, ' + opacity+')'
         case "yellow":
@@ -97,11 +112,6 @@ function colorSelect(){
     }    
 }
 
-function resetColor()
-{
-    opacity = 0.5;
-}
-
 function sizeSelect(){
     // Gets the selected size on change
     var element = document.getElementById('size');
@@ -117,16 +127,38 @@ function sizeSelect(){
 function resetGrid(){
     var elem = document.getElementById("grid");
     while (elem.firstChild) elem.removeChild(elem.firstChild);
+    currentOpacity = 0.3;//Reset opacity
+    //document.getElementById("bottomBtns").removeChild(document.getElementById("bottomBtns").lastChild);
+
 }
 
-function rainbow(e)
-{
-    // Gets all color options
-    var element = document.getElementById('color');
 
-    if(rainbowCount == 7){rainbowCount = 1}; //Max range is 7
-    //Choose random color
-    e.target.style.backgroundColor = element.options[rainbowCount++].value;
-     
-    
+function updateColor(value)
+{
+    color = value;
+    //Reset active button
+    button = document.getElementsByClassName("active")[0];
+    button.setAttribute("class", "")
+
+    button = document.getElementById(color);
+    button.setAttribute("class", "active")
+}
+
+function setPaintActive(input)
+{
+    paint = input;
+}
+
+function screenshot() {//Takes screenshot and replaces sketch
+    html2canvas(document.getElementById("grid"), {scale: 33}).then(canvas => {
+        var sketch = document.getElementById("grid");
+        while (sketch.firstChild) {
+            sketch.removeChild(sketch.firstChild);
+        }
+        sketch.appendChild(canvas);
+
+
+
+    });
+
 }

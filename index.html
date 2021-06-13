@@ -4,36 +4,49 @@
         <title>Etch-a-Sketch</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="viewport" content="width=device-width,user-scalable=no">
+        <script src="html2canvas.min.js"></script>
+
     </head>
     <h1>Etch-a-Sketch</h1>
-    <body>
-        <select id="color" onchange="resetColor()">
-            <option selected value="black" >Black</option>
-            <option value="red">Red</option>
-            <option value="orange">Orange</option>
-            <option value="yellow">Yellow</option>
-            <option value="pink">Pink</option>
-            <option value="purple">Purple</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
-            <option value="rainbow">Rainbow</option>
+    <body onmousedown="setPaintActive(true)" onmouseup="setPaintActive(false)">
+        <div class="mainContainer">
+            <div class="colorselections">
+                <div class="title">Color</div>
+                <button id="black" class="active" onclick="updateColor(id)">Black</button>
+                <button id="red" onclick="updateColor(id)">Red</button>
+                <button id="orange" onclick="updateColor(id)">Orange</button>
+                <button id="yellow" onclick="updateColor(id)">Yellow</button>
+                <button id="pink" onclick="updateColor(id)">Pink</button>
+                <button id="purple" onclick="updateColor(id)">Purple</button>
+                <button id="green"  onclick="updateColor(id)">Green</button>
+                <button id="blue" onclick="updateColor(id)">Blue</button>
+                <button id="rainbow" onclick="updateColor(id)">Rainbow</button>
+            </div>
 
-        </select>
-        <select id="size" onchange=sizeSelect()>
-            <option value="8">8</option>
-            <option value="16" selected>16</option>
-            <option value="24">24</option>
-            <option value="32">32</option>
-            <option value="48">48</option>
-        </select>
-        <div id="mainContainer">
-        <div class="title"></div>
-        <div id="grid">
-        <div class="container"></div>
-        
+            <div class="sketchContainer">
+            <div id="grid">
+            <div class="container"></div>
+            </div>
+                <div id="bottomBtns">
+                    <button id='btn' onclick=resetPage()>RESET</button>
+                    <button onclick="screenshot()" id="screenshotBtn">SCREENSHOT</button>
+                </div>
+            </div>
+           
+
+            <div class="sizeselections">
+                <div class="title">size</div>
+                <select id="size" onchange=sizeSelect()>
+                    <option value="8">8</option>
+                    <option value="16" selected>16</option>
+                    <option value="24">24</option>
+                    <option value="32">32</option>
+                    <option value="48">48</option>
+                </select>
+            </div>
+
         </div>
-        <input id='btn' onclick=resetPage() type='image' src="buttonReset.png"/>
-        </div>
+
         
     </body>
     <script type="text/javascript" src="script.js"></script>
