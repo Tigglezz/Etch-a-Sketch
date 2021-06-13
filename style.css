@@ -57,6 +57,10 @@ h1{
     box-shadow: 0 0 0 0.5px rgb(126, 110, 141),
     0 0 0 2px rgb(69, 55, 83);
 }
+#currentColor{
+    width: 110px;
+    margin: 8px;
+}
 /* Buttons */
 #black{color: white; background-color: rgba(0, 0, 0, 0.822);}
 #red{background-color: rgba(243, 0, 0, 0.664);}

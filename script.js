@@ -5,6 +5,7 @@ var color = "black"; //default black
 var colors = ["red", "orange", "yellow", "pink", "purple", "green", "blue"]
 var rainbowCount = 0; //Starts at zero. ranges through colors 
 var paint = false;
+var customColor = false;
 var currentOpacity = 0.3;
 makeGrid(16); //Default grid   
 
@@ -61,6 +62,7 @@ function hoverBox(e){
             prevOpacity =  parseFloat(currentOpacity) + 0.1;
             e.target.setAttribute("prevopacity", prevOpacity.toString());
         }
+
         if(colorSelect(currentOpacity).slice(5,-4) != e.target.style.backgroundColor.slice(5,-4) && color != "rainbow")
         {
             //Different color
@@ -82,6 +84,7 @@ function colorSelect(opacity){
     // Gets the selected color option with input opacity
     var inputColor = color;
     
+
     if(opacity == "")
     {
         opacity = 0.5;
@@ -91,6 +94,10 @@ function colorSelect(opacity){
         if(rainbowCount == 7){rainbowCount = 0}; //Max range is 7
     }
 
+    if(customColor == true)
+    {
+        return color.slice(0,-5) + opacity + ')'
+    }
     switch(inputColor)
     {
         case "black":
@@ -142,6 +149,8 @@ function updateColor(value)
 
     button = document.getElementById(color);
     button.setAttribute("class", "active")
+
+    customColor = false;
 }
 
 function setPaintActive(input)
@@ -162,3 +171,18 @@ function screenshot() {//Takes screenshot and replaces sketch
     });
 
 }
+
+function setColor(input)
+{
+    console.log(hexToRgb(input));
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(input);
+    color = 'rgba('+parseInt(result[1], 16)+', ' + parseInt(result[2], 16) +', '+parseInt(result[3], 16)+', 0.3)'; 
+    
+    customColor = true;
+
+}
+function hexToRgb(hex) {
+    
+  }
+  

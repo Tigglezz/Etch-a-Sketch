@@ -12,6 +12,7 @@
         <div class="mainContainer">
             <div class="colorselections">
                 <div class="title">Color</div>
+                <input type="color" id="currentColor" onchange="setColor(value)">
                 <button id="black" class="active" onclick="updateColor(id)">Black</button>
                 <button id="red" onclick="updateColor(id)">Red</button>
                 <button id="orange" onclick="updateColor(id)">Orange</button>
@@ -27,10 +28,10 @@
             <div id="grid">
             <div class="container"></div>
             </div>
-                <div id="bottomBtns">
-                    <button id='btn' onclick=resetPage()>RESET</button>
-                    <button onclick="screenshot()" id="screenshotBtn">SCREENSHOT</button>
-                </div>
+            <div id="bottomBtns">
+                <button id='btn' onclick=resetPage()>RESET</button>
+                <button onclick="screenshot()" id="screenshotBtn">SCREENSHOT</button>
+            </div>
             </div>
            
 
