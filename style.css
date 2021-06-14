@@ -93,7 +93,6 @@ h1{
     margin: 20px;
 }
 
-
 .title {
     font-size: 3em;
     color: rgb(0, 0, 0);
@@ -153,3 +152,15 @@ h1{
     background-color: rgb(99, 0, 138);
 }
 
+footer{
+    
+}
+.icons{
+    display: flex;
+    justify-content: space-between;
+}
+.icons img{
+    margin: 2px;
+    height: 32px;
+    width: 32px;
+}
