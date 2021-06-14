@@ -12,7 +12,7 @@
         <div class="mainContainer">
             <div class="colorselections">
                 <div class="title">Color</div>
-                <input type="color" id="currentColor" onchange="setColor(value)">
+                <input type="color" id="currentColor" onchange="setCustomColor(value)">
                 <button id="black" class="active" onclick="updateColor(id)">Black</button>
                 <button id="red" onclick="updateColor(id)">Red</button>
                 <button id="orange" onclick="updateColor(id)">Orange</button>
@@ -37,13 +37,8 @@
 
             <div class="sizeselections">
                 <div class="title">size</div>
-                <select id="size" onchange=sizeSelect()>
-                    <option value="8">8</option>
-                    <option value="16" selected>16</option>
-                    <option value="24">24</option>
-                    <option value="32">32</option>
-                    <option value="48">48</option>
-                </select>
+                <div id="sizeOutput">16</div>
+                <input type="range" min="4" max="80" value="16" id="size">
             </div>
 
         </div>
