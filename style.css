@@ -46,7 +46,7 @@ h1{
     color: black;
     font-weight: bold;
     font-family: 'patrick';
-    font-size: 1.5em;
+    font-size: 1.2em;
     border-radius: 10px;
     border: 2px outset rgb(2, 2, 7);
     box-shadow: 0 0 0 1px rgb(126, 110, 141),
@@ -104,8 +104,8 @@ h1{
     resize: both;
     overflow: auto;
     display: flex;
-    min-width: 600px;
-    min-height: 600px;
+    min-width: 500px;
+    min-height: 400px;
     max-width: 1200px;
     max-height: 1000px;
     display: flex;
@@ -117,7 +117,6 @@ h1{
     width: -webkit-fill-available;
 }
 .box {
-    
     border: 1px solid rgba(0, 0, 0, 0.4);
     background-color: rgba(255, 255, 255, 0.5);
    
