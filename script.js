@@ -14,7 +14,7 @@ var size = document.getElementById("size");
 
 size.oninput = function(){
     currentCols = this.value;
-    slider.innerHTML = currentCols;
+    slider.innerHTML = currentCols + " x " + currentCols;
     makeGrid()
 }
 
@@ -149,16 +149,15 @@ function setPaintActive(input)
     paint = input;
 }
 
-//Take screenshot and replace grid with image
-function screenshot() {//Takes screenshot and replaces sketch
+//Take screenshot of grid and download
+function screenshot() {
     html2canvas(document.getElementById("grid"), {scale: 2}).then(canvas => {
-        var sketch = document.getElementById("grid");
-        while (sketch.firstChild) {
-            sketch.removeChild(sketch.firstChild);
-        }
-        sketch.appendChild(canvas);
+        var img    = canvas.toDataURL("image/png");
+        var link = document.createElement('a');
+        link.download = 'Screenshot.png';
+        link.href = img;
+        link.click();
     });
-
 }
 
 //Remove grid and create new grid
