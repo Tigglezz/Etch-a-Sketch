@@ -18,7 +18,7 @@ h1{
 
 }
 
-.mainContainer{
+#mainContainer{
     display: grid;
     grid-template-columns: 130px auto 120px;
     padding-top: 20px;
@@ -28,11 +28,11 @@ h1{
 
 }
 
-.colorselections, .sizeselections{
+#colorselections, #sizeselections{
     background-color: rgba(53, 99, 117, 0.26);
     border-radius: 10px;
 }
-.colorselections{
+#colorselections{
     display: grid;
 }
 .active{
@@ -41,7 +41,7 @@ h1{
     box-shadow: 0 0 0 0.5px rgb(126, 110, 141),
     0 0 0 2px rgb(69, 55, 83);
 }
-.colorselections button{
+#colorselections button{
     margin: 10px;
     color: black;
     font-weight: bold;
@@ -52,7 +52,7 @@ h1{
     box-shadow: 0 0 0 1px rgb(126, 110, 141),
     0 0 0 3px rgb(69, 55, 83);
 }
-.colorselections button:active{
+#colorselections button:active{
     border: 2px inset rgba(0, 0, 0, 0.473);
     box-shadow: 0 0 0 0.5px rgb(126, 110, 141),
     0 0 0 2px rgb(69, 55, 83);
@@ -75,7 +75,7 @@ h1{
     rgba(255, 170, 13, 0.473), rgba(255, 255, 0, 0.397), rgba(230, 0, 127, 0.459), 
     rgba(128, 0, 128, 0.363), rgba(0, 128, 0, 0.384), rgba(0, 0, 255, 0.377));}
 
-.sizeselections{
+#sizeselections{
     height: 150px;
     display: grid;
 }
@@ -88,7 +88,7 @@ h1{
 
 }
 
-.sketchContainer{
+#sketchContainer{
     justify-self: center;
     margin: 20px;
 }
@@ -154,11 +154,11 @@ h1{
 footer{
     
 }
-.icons{
+#icons{
     display: flex;
     justify-content: space-between;
 }
-.icons img{
+#icons img{
     margin: 2px;
     height: 32px;
     width: 32px;
