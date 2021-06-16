@@ -9,8 +9,8 @@
     </head>
     <h1>Etch-a-Sketch</h1>
     <body onmousedown="setPaintActive(true)" onmouseup="setPaintActive(false)">
-        <div class="mainContainer">
-            <div class="colorselections">
+        <div id="mainContainer">
+            <div id="colorselections">
                 <div class="title">Color</div>
                 <input type="color" id="currentColor" onchange="setCustomColor(value)">
                 <button id="black" class="active" onclick="updateColor(id)">Black</button>
@@ -24,7 +24,7 @@
                 <button id="rainbow" onclick="updateColor(id)">Rainbow</button>
             </div>
 
-            <div class="sketchContainer">
+            <div id="sketchContainer">
             <div id="grid">
             <div class="container"></div>
             </div>
@@ -33,7 +33,7 @@
                 <button onclick="screenshot()" id="screenshotBtn">SCREENSHOT</button>
             </div>
             </div>
-            <div class="sizeselections">
+            <div id="sizeselections">
                 <div class="title">size</div>
                 <div id="sizeOutput">16 x 16</div>
                 <input type="range" min="4" max="90" value="16" id="size">
@@ -42,9 +42,9 @@
     </body>
 
     <footer>
-        <div class="odinLink">
+        <div id="odinLink">
             Made for: <a href="https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/etch-a-sketch-project">The Odin Project</a></div>
-        <div class="icons">
+        <div id="icons">
             <a href="https://github.com/Tigglezz/Etch-a-Sketch"><img src="Icons/GitHub-Mark-32px.png"></a>
             <a href="https://www.codewars.com/users/Tigglezz"><img src="Icons/codewars_logo_icon_145389.png"></a>
             <a href="https://discordapp.com/users/293838564821565441"><img src="Icons/discord_logo_icon_145337.png"></a>
